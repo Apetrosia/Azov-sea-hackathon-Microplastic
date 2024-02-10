@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://btlkg372i4c8g"]
+
+[ext_resource type="Script" path="res://archive/archive.gd" id="1_akxcn"]
+
+[node name="Archive" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_akxcn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.678431, 0.678431, 0.678431, 0.592157)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="ItemList" type="ItemList" parent="ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+fixed_icon_size = Vector2i(100, 100)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 40
+text = "Назад"
+
+[connection signal="item_clicked" from="ColorRect/MarginContainer/ScrollContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://8meapovcana"]
+
+[ext_resource type="Script" path="res://photo_analysis/photo_analysis.gd" id="1_bpevd"]
+[ext_resource type="Texture2D" uid="uid://ffrw2ht643kk" path="res://icon.svg" id="2_r8x2r"]
+
+[node name="PhotoAnalysis" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bpevd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.862745, 0.298039, 0.34902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "фото.png"
+horizontal_alignment = 1
+
+[node name="Photo" type="TextureRect" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+texture = ExtResource("2_r8x2r")
+stretch_mode = 3
+
+[node name="Histogram" type="Label" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Гистограмма размеров"
+horizontal_alignment = 1
+
+[node name="HistogramPhoto" type="TextureRect" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+texture = ExtResource("2_r8x2r")
+stretch_mode = 3
+
+[node name="Colors" type="Label" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Распределение цветов
+"
+horizontal_alignment = 1
+
+[node name="ColorsInfo" type="RichTextLabel" parent="ColorRect/MarginContainer/ScrollContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Синий: 3
+Красный: 5
+Желтый: 6"
+fit_content = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 40
+text = "Назад"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
