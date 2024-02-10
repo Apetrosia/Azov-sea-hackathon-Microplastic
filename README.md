@@ -19,11 +19,10 @@
 
 ## Примеры работы нейросети
 
-![Рис. 1](https://drive.google.com/file/d/1Iy7DS-LLaUL-mY6IJnlsyoa6Kqa2KHO2/view?usp=sharing)
+![Кусочек микроппластика](/res_1.jpg "Рис. 1")
 
+![Кусочек микропластика под органической тканью](/res_2.jpg "Рис. 2")
 
-![Рис. 2](https://drive.google.com/file/d/1LgbbXxOufgzl4wNxHjz2FRSng8h1VxQY/view?usp=sharing)
+![Несколько кусочков микропластика](/res_3.jpg "Рис. 3")
 
-![Рис. 3](https://drive.google.com/file/d/1TUcDvixL9YEZbFNPpb_OMC3JB7XtOrT9/view?usp=sharing)
-
-![Рис. 4](https://drive.google.com/file/d/1JBVTTeNiDZ3u33f9XJB2AnIbUtQPDiom/view?usp=sharing)
+![Маленький кусочек микропластика](/res_4.jpg "Рис. 4")
