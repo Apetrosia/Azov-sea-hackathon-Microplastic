@@ -38,7 +38,10 @@ def unique_count_app(a):
 def anylize_color(image):
     h, w = image.shape[:2]
     y, x = h//2, w//2
-    center = image[y - 5:y + 5, x - 5:x + 5]
+    if h < 12 or w < 12:
+        center = image
+    else:
+        center = image[y - 5:y + 5, x - 5:x + 5]
     dominant_color = cv2.mean(center)[-2::-1]  # OpenCV возвращает BGRA, берем RGB
     #dominant_color = unique_count_app(image)
     #cv2.imwrite('$temp$.png', image)
