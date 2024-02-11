@@ -84,6 +84,7 @@ def detect_microplastics(image):
 
 # draws bounds on image
 def draw_bounds(image, boxes, indices, confidences):
+    cnt = 1
     # loop over the indices only if the `indices` list is not empty
     if len(indices) > 0:
         # loop over the indices
@@ -92,8 +93,9 @@ def draw_bounds(image, boxes, indices, confidences):
             cv2.rectangle(image, (x, y), (x + w, y + h), green, 2)
             particle_image = image[y:y + h, x:x + w]
             particle_color = microplastic_analysis.anylize_color(particle_image)
-            text = f"{label}: {confidences[i] * 100:.2f}% {particle_color} color"
+            text = f"{cnt} {label}: {confidences[i] * 100:.2f}%; {particle_color} color"
             cv2.putText(image, text, (x, y - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, green, 2)
+            cnt += 1
 
 # open a window with image
 def show_image(image):
