@@ -11,7 +11,8 @@
 
 ## Технический стек
 
-- нейросеть YOLA4
+- нейросеть YOLOv4
+- Darknet
 - Python (OpenCV, pandas)
 - Godot Engine (frontend)
 

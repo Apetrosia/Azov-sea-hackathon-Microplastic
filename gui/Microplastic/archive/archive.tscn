@@ -13,6 +13,7 @@ mouse_filter = 1
 script = ExtResource("1_akxcn")
 
 [node name="LineEdit" type="LineEdit" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,7 +60,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../../../../LineEdit")
 theme_override_font_sizes/font_size = 40
+item_count = 1
 fixed_icon_size = Vector2i(100, 100)
+item_0/text = ""
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
@@ -72,5 +75,6 @@ focus_neighbor_bottom = NodePath("../ColorRect/MarginContainer/ScrollContainer/I
 theme_override_font_sizes/font_size = 40
 text = "Назад"
 
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="item_clicked" from="ColorRect/MarginContainer/ScrollContainer/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

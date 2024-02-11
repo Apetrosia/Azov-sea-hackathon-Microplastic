@@ -34,6 +34,8 @@ func _on_back_pressed():
 
 func _on_item_list_item_clicked(index, _at_position, _mouse_button_index):
 	var regex = RegEx.new()
-	regex.compile("")
-	CurrentFile.cur_file = item_list.get_item_text(index)
+	regex.compile("\\b[^\\.]*\\.\\w*\\b")
+	CurrentFile.cur_file = regex.search(item_list.get_item_text(index)).get_string()
+	print(CurrentFile.cur_file)
 	get_tree().change_scene_to_file("res://photo_analysis/photo_analysis.tscn")
+
