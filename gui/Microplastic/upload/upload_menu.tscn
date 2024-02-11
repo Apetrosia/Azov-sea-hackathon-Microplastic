@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://rb8pj1101t2p"]
+
+[ext_resource type="Script" path="res://upload/upload_menu.gd" id="1_cay77"]
+
+[node name="UploadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cay77")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(392, 159)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png, *.jpg, *.jpeg")
+use_native_dialog = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.862745, 0.298039, 0.34902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 400
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Place" type="LineEdit" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+placeholder_text = "Введите место"
+
+[node name="Time" type="LineEdit" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+placeholder_text = "Введите дату"
+
+[node name="Upload" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Загрузить фото"
+
+[node name="Back" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 90.0
+focus_neighbor_right = NodePath("../LineEdit")
+focus_neighbor_bottom = NodePath("../ColorRect/MarginContainer/ScrollContainer/ItemList")
+theme_override_font_sizes/font_size = 40
+text = "Назад"
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Upload" to="." method="_on_upload_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
