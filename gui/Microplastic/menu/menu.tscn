@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://btrks4kxqy4q"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_ujvfw"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ujvfw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.862745, 0.298039, 0.34902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Microplastics Analysis"
+horizontal_alignment = 1
+
+[node name="Upload" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Загрузить фото"
+
+[node name="SavedPhotos" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Сохраненные фото"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Upload" to="." method="_on_upload_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/SavedPhotos" to="." method="_on_saved_photos_pressed"]
