@@ -2,6 +2,7 @@ import cv2
 import glob
 import numpy as np
 import os
+import microplastic_analysis
 
 
 # define the minimum confidence (to filter weak detections)
@@ -89,7 +90,9 @@ def draw_bounds(image, boxes, indices, confidences):
         for i in indices.flatten():
             (x, y, w, h) = boxes[i][0], boxes[i][1], boxes[i][2], boxes[i][3]
             cv2.rectangle(image, (x, y), (x + w, y + h), green, 2)
-            text = f"{label}: {confidences[i] * 100:.2f}%"
+            particle_image = image[y:y + h, x:x + w]
+            particle_color = microplastic_analysis.anylize_color(particle_image)
+            text = f"{label}: {confidences[i] * 100:.2f}% {particle_color} color"
             cv2.putText(image, text, (x, y - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, green, 2)
 
 # open a window with image
@@ -99,6 +102,8 @@ def show_image(image):
 
 # save image
 def save_image(image, image_path, output_path):
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
     filename = os.path.basename(image_path)
     cv2.imwrite(os.path.join(output_path, "$.png"), image)
     try:
