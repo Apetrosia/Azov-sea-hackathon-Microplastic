@@ -14,7 +14,6 @@ from aiogram.filters import CommandStart, StateFilter
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.utils.markdown import hbold
 
-
 # Токен бота
 TOKEN = "6597199456:AAGfbAsSCcEVArI5qhYuENidHDjwNogvyhE"
 dp = Dispatcher(storage=MemoryStorage())
@@ -34,10 +33,12 @@ async def download_photo(message: Message, bot: Bot):
     await message.answer("Результаты вычисляются...")
     image = find_microplastic.open_image(image_path)
     boxes, indices, confidences = find_microplastic.detect_microplastics(image)
-    find_microplastic.draw_bounds(image, boxes, indices, confidences)
+    info = find_microplastic.draw_bounds(image, boxes, indices, confidences)
     find_microplastic.save_image(image, image_path, res_path)
     photo = FSInputFile(res_name)
     await message.answer_photo(photo=photo)
+    for particle in info:
+        await message.answer(text=particle)
     os.remove(image_path)
     os.remove(res_name)
 
